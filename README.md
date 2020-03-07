@@ -127,6 +127,7 @@ Your source code MUST have a comment section in the beginning with the name(s) o
 
 Please use ZIP format when submitting your project (no Z, RAR, or any other format will be accepted). 
 
+---
 Rubric
 
 This programming assignment is worth 100 points, distributed in the following way: 
