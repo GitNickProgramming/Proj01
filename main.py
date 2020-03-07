@@ -5,7 +5,7 @@ from enum import IntEnum
 import sys
 
 # enables parser's debugging
-DEBUG = True
+DEBUG = False
 
 # all char classes
 class CharClass(IntEnum):
@@ -377,21 +377,25 @@ def loadGrammar(input):
         grammar.append(line.strip())
     return grammar
 
+
 # returns the LHS (left hand side) of a given production
 def getLHS(production):
     return production.split("->")[0].strip()
+
 
 # returns the RHS (right hand side) of a given production
 def getRHS(production):
     return production.split("->")[1].strip().split(" ")
 
+
 # prints the productions of a given grammar, one per line
 def printGrammar(grammar):
     i = 0
     for production in grammar:
-        print(str(i) + ". " + getLHS(production), end = " -> ")
-        print(getRHS(production))
+        # print(str(i) + ". " + getLHS(production), end = " -> ")
+        # print(getRHS(production))
         i += 1
+
 
 # reads the given input containing an SLR parsing table and returns the "actions" and "gotos" as dictionaries
 def loadTable(input):
@@ -563,11 +567,11 @@ if __name__ == "__main__":
     try:
         grammarFile = None
         try:
-            grammarFile = open("../grammar.txt", "rt")
+            grammarFile = open("grammar2.txt", "rt")
         except:
             pass
         if not grammarFile:
-            raise IOError(errorMessage(4))
+            raise IOError(errorMessage(1))
         grammar = loadGrammar(grammarFile)
         grammarFile.close()
         printGrammar(grammar)
@@ -579,7 +583,7 @@ if __name__ == "__main__":
     try:
         slrTableFile = None
         try:
-            slrTableFile = open("../slr_table.csv", "rt")
+            slrTableFile = open("slr_table2.csv", "rt")
         except:
             pass
         if not slrTableFile:
