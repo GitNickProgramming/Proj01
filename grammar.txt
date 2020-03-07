@@ -11,8 +11,8 @@ D* -> , IDENTIFIER [ INT_LITERAL ] D*
 S -> S'
 S -> S' S
 S' -> A
-S' -> B'
-S' -> B*
+S' -> G'
+S' -> G*
 S' -> { S }
 A -> IDENTIFIER = E ;
 A -> IDENTIFIER [ E ] = E ;
@@ -26,30 +26,30 @@ C' -> && U
 C' -> && U C'
 U -> R
 U -> R Q R
-R -> J
-R -> J O J
-J -> M
-J -> M J'
-J' -> H M
-J' -> H M J'
+R -> Y
+R -> Y O Y
+Y -> M
+Y -> M Y'
+Y' -> H M
+Y' -> H M Y'
 M -> F
 M -> F M'
-M' -> V F
-M' -> V F M'
+M' -> W F
+M' -> W F M'
 F -> IDENTIFIER
 F -> IDENTIFIER [ E ]
 F -> L
 F -> ( E )
-B' -> IF ( E ) S
-B' -> IF ( E ) S ELSE S
-B* -> WHILE ( E ) { S }
+G' -> IF ( E ) S
+G' -> IF ( E ) S ELSE S
+G* -> WHILE ( E ) { S }
 L -> INT_LITERAL
 L -> TRUE
 L -> FALSE
 L -> FLOAT_LITERAL
 L -> CHAR_LITERAL
-V -> *
-V -> /
+W -> *
+W -> /
 H -> +
 H -> -
 O -> <
