@@ -6,8 +6,13 @@ Nick Gagliardi, Spring 2020
 ### Parser
 
 A lexical analyzer and bottom-up parser for a 'C-lite' language.
+The goal of this assignment is to have you write a lexical and syntax analyzer for a hypothetical programming language (roughly based on C).  The input of your parser is a source code written in the programming language’s grammar.  If the source code is syntactically correct your parser should display the corresponding parse tree.  An appropriate error message should be provided otherwise. 
 
+The expectation for this programming assignment is that you will be coding a complete parser from scratch.  You can choose between the two approaches discussed in class: top-down or bottom-up.  I will NOT grade solutions based on any parser generator like YACC or JavaCC, for example. 
+
+---
 The grammar in EBNF:
+Below is the grammar for the CLite programming language specified using EBNF notation.  Special words and symbols are highlighted for easy identification (better seen in color).  Assume that this PL is NOT case-sensitive. 
 
 ```
 <program>           →   int main ( ) { <declaration>+ <statement>+ }
@@ -37,7 +42,7 @@ The grammar in EBNF:
 <float_literal>     →   <int_literal> . <int_literal>
 <char_literal>      →   ' <letter> '
 ```
-
+---
 Translated into SLR table-ready productions:
 
 ```
@@ -106,3 +111,46 @@ T -> BOOL
 T -> FLOAT
 T -> CHAR
 ```
+---
+Deliverables and Submission
+
+Below is the list of minimum deliverables for this project:
+parser.xxx source code (e.g., parser.py or parser.java) 
+grammar.txt file, and
+slr_table.csv file. 
+
+Files grammar.txt and slr_table.csv are only required if your parser is based on the shift-reduce (bottom-up) algorithm discussed in class.  The format of those files must match the one used in class.  
+
+If you are writing your parser in a PL other than Python or Java you MUST provide specific instructions on how to properly setup your development environment, including IDE/compiler used (with version numbers) and how to compile/run your code.  I should be able to test your code using MacOS.  So if you are using a different platform I encourage you to contact me ahead of the deadline so I can properly set up my computer.  If I cannot run your parser from the source code I cannot grade it!
+
+Your source code MUST have a comment section in the beginning with the name(s) of the author(s) of the project.  You are allowed to work together with another classmate.  Teams of more than two students will NOT be accepted (NO exceptions).  Only one of the members of the team needs to submit on Blackboard. 
+
+Please use ZIP format when submitting your project (no Z, RAR, or any other format will be accepted). 
+
+Rubric
+
+This programming assignment is worth 100 points, distributed in the following way: 
+
++3    command-line validation
++32   lexical analyzer works as expected 
+    +5 token codes match specification
+    +1 recognizes EOF
+    +3 recognizes identifiers
+    +3 recognizes literals
+    +5 recognizes special words
+    +1 recognizes assignment operator
+    +3 recognizes arithmetic operator
+    +3 recognizes relational operators 
+    +2 recognizes logical operators
+    +3 recognizes punctuators
+    +2 recognizes delimiters
+    +1 raises exception with proper error message when it fails
++60    syntax analyzer works as expected
+    +10 grammar used matches specification 
+    +10 parser error codes match
+    +20 parse tree is built correctly
+    +30 parser properly shows syntactic errors 
++5    submission follows instructions (student names identified in a comment section, zip format, source/grammar/slr table submitted, specific instructions provided when using different development platforms etc.)
+
+10 points will be deducted for each day of late submission. I will not accept submissions that are five days (or more) late. 
+
