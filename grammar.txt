@@ -1,0 +1,64 @@
+P -> INT MAIN ( ) { D S }
+D -> D'
+D' -> D' D
+D' -> Y IDENTIFIER ;
+D' -> Y IDENTIFIER D* ;
+D' -> Y IDENTIFIER [ INT_LITERAL ] D* ;
+D* -> , IDENTIFIER
+D* -> , IDENTIFIER D*
+D* -> , IDENTIFIER [ INT_LITERAL ]
+D* -> , IDENTIFIER [ INT_LITERAL ] D*
+S -> S'
+S -> S' S
+S' -> A
+S' -> B'
+S' -> B*
+S' -> { S }
+A -> IDENTIFIER = X ;
+A -> IDENTIFIER [ X ] = X ;
+X -> C
+X -> C X'
+X' -> || C
+X' -> || C X'
+C -> E
+C -> E C'
+C' -> && E
+C' -> && E C'
+E -> R
+E -> R Q R
+R -> J
+R -> J O J
+J -> T
+J -> T J'
+J' -> H T
+J' -> H T J'
+T -> F
+T -> F T'
+T' -> V F
+T' -> V F T'
+F -> IDENTIFIER
+F -> IDENTIFIER [ X ]
+F -> K
+F -> ( X )
+B' -> IF ( X ) S
+B' -> IF ( X ) S ELSE S
+B* -> WHILE ( X ) { S }
+K -> INT_LITERAL
+K -> TRUE
+K -> FALSE
+K -> FLOAT_LITERAL
+K -> CHAR_LITERAL
+V -> *
+V -> /
+H -> +
+H -> -
+O -> <
+O -> <=
+O -> >
+O -> >=
+Q -> ==
+Q -> !=
+Y -> INT
+Y -> BOOL
+Y -> FLOAT
+Y -> CHAR
